@@ -145,6 +145,7 @@ class Lottie extends StatefulWidget {
     Alignment? alignment,
     bool? addRepaintBoundary,
     WarningCallback? onWarning,
+    String? name,
   }) =>
       LottieBuilder.memory(
         bytes,
@@ -166,6 +167,7 @@ class Lottie extends StatefulWidget {
         alignment: alignment,
         addRepaintBoundary: addRepaintBoundary,
         onWarning: onWarning,
+        name: name,
       );
 
   /// Creates a widget that displays an [LottieComposition] obtained from the network.

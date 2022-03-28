@@ -8,15 +8,18 @@ import 'load_image.dart';
 import 'lottie_provider.dart';
 
 class MemoryLottie extends LottieProvider {
-  MemoryLottie(this.bytes, {LottieImageProviderFactory? imageProviderFactory})
+  MemoryLottie(this.bytes,
+      {LottieImageProviderFactory? imageProviderFactory, this.name})
       : super(imageProviderFactory: imageProviderFactory);
 
   final Uint8List bytes;
+  final String? name;
 
   @override
   Future<LottieComposition> load() async {
-    // TODO(xha): hash the list content
-    var cacheKey = 'memory-${bytes.hashCode}-${bytes.lengthInBytes}';
+    var cacheKey = name != null
+        ? 'memory-$name-bundle'
+        : 'memory-${bytes.hashCode}-${bytes.lengthInBytes}';
     return sharedLottieCache.putIfAbsent(cacheKey, () async {
       var composition = await LottieComposition.fromBytes(bytes,
           imageProviderFactory: imageProviderFactory);

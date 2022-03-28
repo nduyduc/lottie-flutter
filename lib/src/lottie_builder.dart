@@ -171,8 +171,9 @@ class LottieBuilder extends StatefulWidget {
     this.alignment,
     this.addRepaintBoundary,
     this.onWarning,
-  })  : lottie =
-            MemoryLottie(bytes, imageProviderFactory: imageProviderFactory),
+    String? name,
+  })  : lottie = MemoryLottie(bytes,
+            imageProviderFactory: imageProviderFactory, name: name),
         super(key: key);
 
   /// The lottie animation to load.
